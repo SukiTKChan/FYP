@@ -9,7 +9,7 @@ public abstract class PieceControl : MonoBehaviour {
 
     internal PositionOnBoard position;
 
-    internal enum Colour { Red, Black};
+    internal enum Colour { Red, Black,Empty};
 
     internal Colour color;
 

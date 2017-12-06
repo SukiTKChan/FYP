@@ -34,14 +34,20 @@ public class Pawn : PieceControl
     internal override List<PositionOnBoard> LegalMoves()
     {
         List<PositionOnBoard> movesFound = new List<PositionOnBoard>();
-        //move one space forward, never go diagonally
+        //move one space forward, if on its side of river
         movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Vpos + 1 : position.Vpos - 1)));
+
+        //if on other side of river, can move forward, left and right 
         if (!position.OnMySideOfRiver(base.color) )
    
         {
             movesFound.Add(new PositionOnBoard(position.Hpos+1, position.Vpos  ));
             movesFound.Add(new PositionOnBoard(position.Hpos-1, position.Vpos  ));
         }
+		
+		//cannot go into palace
+
+        //if on last row, it can only move sideways
 
         List<PositionOnBoard> legalMovesFound = new List<PositionOnBoard>();
         foreach (PositionOnBoard move in movesFound)
@@ -52,6 +58,6 @@ public class Pawn : PieceControl
 
     private bool IsLegal(PositionOnBoard move)
     {
-        return move.IsOnBoard() && theBoard.isPOsitionOccupiedbyA(position, base.color);
+        return move.IsOnBoard() && !theBoard.isPOsitionOccupiedbyA(move, base.color) && move.NotinAnyPalace();
     }
 }

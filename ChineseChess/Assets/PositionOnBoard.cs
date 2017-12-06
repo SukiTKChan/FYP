@@ -52,6 +52,23 @@ public class PositionOnBoard
     {
         return (i >= 0) && (i < NumberOfHorizontalSpacesOnBoard) && (j >= 0) && (j < NUmberOfVerticalSpacesONBoard);
     }
+
+    internal bool IsinMyPalace(PieceControl.Colour colorOfPiece)
+    {
+
+        return (i >= 3) && (i <= 5) && (colorOfPiece == PieceControl.Colour.Red ? (j >= 0) && (j <= 2) : (j >= 7) && (j <= 9));
+    }
+
+    internal bool IsinOpposingPalace(PieceControl.Colour colorOfPiece)
+    {
+
+        return (i >= 3) && (i <= 5) && (colorOfPiece == PieceControl.Colour.Black ? (j >= 0) && (j <= 2) : (j >= 7) && (j <= 9));
+    }
+
+    internal bool NotinAnyPalace()
+    {
+        return !IsinMyPalace(PieceControl.Colour.Red) && !IsinMyPalace(PieceControl.Colour.Black);
+    }
     public int Vpos
     {
         get
