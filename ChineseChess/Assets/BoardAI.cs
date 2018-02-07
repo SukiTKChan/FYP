@@ -17,13 +17,14 @@ public class BoardAI
     private void setupPieces()
     {
 
-        theboard[3, 6] = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(3,6));
-        theboard[3, 6].LinktoBoard(this);
+        //theboard[1, 7] = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(1,7));
+        theboard[4, 0] = new King(PieceControl.Colour.Red, new PositionOnBoard(4, 0));
+        theboard[4, 0].LinktoBoard(this);
     }
 
 
 
-    internal bool isPOsitionOccupiedbyA(PositionOnBoard position, PieceControl.Colour color)
+    internal bool isPositionOccupiedbyA(PositionOnBoard position, PieceControl.Colour color)
     {
         return (theboard[position.Hpos, position.Vpos]) &&  theboard[position.Hpos, position.Vpos].color == color;
     }

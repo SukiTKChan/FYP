@@ -45,9 +45,6 @@ public class Pawn : PieceControl
             movesFound.Add(new PositionOnBoard(position.Hpos-1, position.Vpos  ));
         }
 		
-		//cannot go into palace
-
-        //if on last row, it can only move sideways
 
         List<PositionOnBoard> legalMovesFound = new List<PositionOnBoard>();
         foreach (PositionOnBoard move in movesFound)
@@ -58,6 +55,6 @@ public class Pawn : PieceControl
 
     private bool IsLegal(PositionOnBoard move)
     {
-        return move.IsOnBoard() && !theBoard.isPOsitionOccupiedbyA(move, base.color) && move.NotinAnyPalace();
+        return move.IsOnBoard() && !theBoard.isPositionOccupiedbyA(move, base.color) && move.NotInAnyPalace();
     }
 }
