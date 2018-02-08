@@ -31,11 +31,14 @@ public class Guard : PieceControl
     internal override List<PositionOnBoard> LegalMoves()
     {
         List<PositionOnBoard> movesFound = new List<PositionOnBoard>();
+
         //A guard moves one space diagonally only, Cannot leave its palace 
-        if (position.OnMySideOfRiver(base.color) && position.IsInMyPalace(base.color))
+        if (position.IsInMyPalace(base.color))
         {
-            //movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos));
-            //movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos));
+            movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos + 1));
+            movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos - 1));
+            movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos - 1));
+            movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos + 1));
         }
 
       
@@ -49,6 +52,6 @@ public class Guard : PieceControl
 
     private bool IsLegal(PositionOnBoard move)
     {
-        return move.IsOnBoard() && !theBoard.isPositionOccupiedbyA(move, base.color);
+        return move.IsOnBoard() && !theBoard.isPositionOccupiedbyA(move, base.color) && move.IsInMyPalace(base.color);
     }
 }

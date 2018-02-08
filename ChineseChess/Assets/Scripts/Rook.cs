@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Rook : PieceControl
 {
+    internal Rook(Colour red, PositionOnBoard positionOnBoard)
+    {
+        color = red;
+        position = positionOnBoard;
+    }
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
     {
 		
 	}
@@ -25,6 +30,10 @@ public class Rook : PieceControl
     {
         List<PositionOnBoard> movesFound = new List<PositionOnBoard>();
         //Moves any number of spaces vertically or horizontally until it meets another piece or the edge of the board.
+        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Hpos + 1 : position.Hpos - 1)));
+        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Hpos - 1 : position.Hpos + 1)));
+        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Vpos + 1 : position.Vpos - 1)));
+        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Vpos - 1 : position.Vpos + 1)));
 
         List<PositionOnBoard> legalMovesFound = new List<PositionOnBoard>();
         foreach (PositionOnBoard move in movesFound)
@@ -35,6 +44,6 @@ public class Rook : PieceControl
 
     private bool IsLegal(PositionOnBoard move)
     {
-        return move.IsOnBoard() && !theBoard.isPositionOccupiedbyA(move, base.color) && move.NotInAnyPalace();
+        return move.IsOnBoard() && !theBoard.isPositionOccupiedbyA(move, base.color);
     }
 }

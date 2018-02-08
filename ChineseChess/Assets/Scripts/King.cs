@@ -35,7 +35,9 @@ public class King : PieceControl
         if (position.IsInMyPalace(base.color))
         {
             movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos));
-            movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos)); 
+            movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos));
+            movesFound.Add(new PositionOnBoard(position.Hpos, position.Vpos +1));
+            movesFound.Add(new PositionOnBoard(position.Hpos, position.Vpos -1));
         }
 
 
