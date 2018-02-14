@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PieceControl : MonoBehaviour {
+public abstract class PieceControl : MonoBehaviour 
+{
 
     internal BoardAI theBoard;
 

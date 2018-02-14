@@ -45,7 +45,8 @@ public class Pawn : PieceControl
             movesFound.Add(new PositionOnBoard(position.Hpos-1, position.Vpos  ));
         }
 		
-
+        //creating a list to store all legal moves,if move found and it is legal, add it to the list
+        //return all the possible legal moves
         List<PositionOnBoard> legalMovesFound = new List<PositionOnBoard>();
         foreach (PositionOnBoard move in movesFound)
             if (IsLegal(move)) legalMovesFound.Add(move);

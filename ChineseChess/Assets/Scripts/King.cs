@@ -31,7 +31,7 @@ public class King : PieceControl
     {
         List<PositionOnBoard> movesFound = new List<PositionOnBoard>();
 
-        //moves one space vertically or horizontally only , cannot leave its palace
+        //if position in own palace, moves one space vertically or horizontally only
         if (position.IsInMyPalace(base.color))
         {
             movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos));
@@ -40,7 +40,8 @@ public class King : PieceControl
             movesFound.Add(new PositionOnBoard(position.Hpos, position.Vpos -1));
         }
 
-
+        //creating a list to store all legal moves,if move found and it is legal, add it to the list
+        //return all the possible legal moves
         List<PositionOnBoard> legalMovesFound = new List<PositionOnBoard>();
         foreach (PositionOnBoard move in movesFound)
             if (IsLegal(move)) legalMovesFound.Add(move);

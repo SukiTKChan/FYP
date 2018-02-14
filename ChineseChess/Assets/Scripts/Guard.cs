@@ -32,7 +32,7 @@ public class Guard : PieceControl
     {
         List<PositionOnBoard> movesFound = new List<PositionOnBoard>();
 
-        //A guard moves one space diagonally only, Cannot leave its palace 
+        //if position in own palace, moves one space diagonally only 
         if (position.IsInMyPalace(base.color))
         {
             movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos + 1));
@@ -41,8 +41,9 @@ public class Guard : PieceControl
             movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos + 1));
         }
 
-      
 
+        //creating a list to store all legal moves,if move found and it is legal, add it to the list
+        //return all the possible legal moves
         List<PositionOnBoard> legalMovesFound = new List<PositionOnBoard>();
         foreach (PositionOnBoard move in movesFound)
             if (IsLegal(move)) legalMovesFound.Add(move);

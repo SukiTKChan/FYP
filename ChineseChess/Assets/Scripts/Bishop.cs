@@ -30,8 +30,7 @@ public class Bishop : PieceControl
     {
         List<PositionOnBoard> movesFound = new List<PositionOnBoard>();
 
-        //Moves exactly two points in any diagonal direction 
-        //not allowed to cross the river, they must stay on their half of the board
+        //must be on own side of board, moves exactly two points in any diagonal direction 
         if (position.OnMySideOfRiver(base.color))
 
         {
@@ -41,7 +40,8 @@ public class Bishop : PieceControl
             movesFound.Add(new PositionOnBoard(position.Hpos - 2, position.Vpos + 2));
         }
 
-
+        //creating a list to store all legal moves,if move found and it is legal, add it to the list
+        //return all the possible legal moves
         List<PositionOnBoard> legalMovesFound = new List<PositionOnBoard>();
         foreach (PositionOnBoard move in movesFound)
             if (IsLegal(move)) legalMovesFound.Add(move);
