@@ -30,10 +30,10 @@ public class Rook : PieceControl
     {
         List<PositionOnBoard> movesFound = new List<PositionOnBoard>();
         //Moves any number of spaces vertically or horizontally until it meets another piece or the edge of the board.
-        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Hpos + 1 : position.Hpos - 1)));
-        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Hpos - 1 : position.Hpos + 1)));
-        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Vpos + 1 : position.Vpos - 1)));
-        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Vpos - 1 : position.Vpos + 1)));
+        movesFound.Add(new PositionOnBoard(position.Hpos + 1 , position.Hpos - 1));
+        movesFound.Add(new PositionOnBoard(position.Hpos - 1 , position.Hpos + 1));
+        movesFound.Add(new PositionOnBoard(position.Vpos + 1 , position.Vpos - 1));
+        movesFound.Add(new PositionOnBoard(position.Vpos - 1 , position.Vpos + 1));
 
         //creating a list to store all legal moves,if move found and it is legal, add it to the list
         //return all the possible legal moves

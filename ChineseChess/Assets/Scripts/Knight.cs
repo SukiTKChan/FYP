@@ -34,11 +34,36 @@ public class Knight : PieceControl
         //If the first point of the horizontal or vertical move is blocked by a piece, 
         //then the Knight may not move in that direction
         //Knight cannot jump over occupied places
+        movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Hpos - 1));
+        movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Hpos + 1));
+        movesFound.Add(new PositionOnBoard(position.Vpos + 1, position.Vpos - 1));
+        movesFound.Add(new PositionOnBoard(position.Vpos - 1, position.Vpos + 1));
 
-        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Hpos + 1 : position.Hpos - 1)));
-        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Hpos - 1 : position.Hpos + 1)));
-        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Vpos + 1 : position.Vpos - 1)));
-        movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Vpos - 1 : position.Vpos + 1)));
+        //if (!position.isPieceBlockingHere(position.Hpos, position.Vpos + 1))
+        //{
+        //    movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos + 2));
+        //    movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos + 2));
+        //}
+
+        //if (!position.isPieceBlockingHere(position.Hpos + 1, position.Vpos)
+        //{
+        //    movesFound.Add(new PositionOnBoard(position.Hpos + 2, position.Vpos - 1 ));
+        //    movesFound.Add(new PositionOnBoard(position.Hpos + 2, position.Vpos + 1 ));
+        //}
+
+        //if (!position.isPieceBlockingHere(position.Hpos, position.Vpos - 1)
+        //{
+        //    movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos - 2));
+        //    movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos - 2));
+        //}
+
+        //if (!position.isPieceBlockingHere(position.Hpos - 1, position.Vpos)
+        //{
+        //    movesFound.Add(new PositionOnBoard(position.Hpos - 2, position.Vpos - 1));
+        //    movesFound.Add(new PositionOnBoard(position.Hpos - 2, position.Vpos + 1));
+        //}
+
+
 
         //creating a list to store all legal moves,if move found and it is legal, add it to the list
         //return all the possible legal moves
