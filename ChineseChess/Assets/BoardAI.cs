@@ -21,8 +21,9 @@ public class BoardAI
         //theboard[4, 1] = new King(PieceControl.Colour.Red, new PositionOnBoard(4, 1));
         //theboard[5, 2] = new Guard(PieceControl.Colour.Red, new PositionOnBoard(5, 2));
         //theboard[4, 4] = new Bishop(PieceControl.Colour.Red, new PositionOnBoard(4, 4));
-        theboard[4, 5] = new Rook(PieceControl.Colour.Red, new PositionOnBoard(4, 5));
-        theboard[4, 5].LinktoBoard(this);
+        //theboard[4, 5] = new Rook(PieceControl.Colour.Red, new PositionOnBoard(4, 5));
+        theboard[4, 7] = new Knight(PieceControl.Colour.Red, new PositionOnBoard(4, 7));
+        theboard[4, 7].LinktoBoard(this);
     }
 
 
@@ -30,5 +31,12 @@ public class BoardAI
     internal bool isPositionOccupiedbyA(PositionOnBoard position, PieceControl.Colour color)
     {
         return (theboard[position.Hpos, position.Vpos]) &&  theboard[position.Hpos, position.Vpos].color == color;
+    }
+
+
+
+    internal bool isPositionOccupied(PositionOnBoard positionOnBoard)
+    {
+        return isPositionOccupiedbyA(positionOnBoard, PieceControl.Colour.Red) || isPositionOccupiedbyA(positionOnBoard, PieceControl.Colour.Black);
     }
 }

@@ -70,10 +70,7 @@ public class PositionOnBoard
         return !IsInMyPalace(PieceControl.Colour.Red) && !IsInMyPalace(PieceControl.Colour.Black);
     }
 
-    //internal bool isPieceBlockingHere(PieceControl.Colour colorOfPiece)
-    //{
-    //    return 
-    //}
+  
     public int Vpos
     {
         get
