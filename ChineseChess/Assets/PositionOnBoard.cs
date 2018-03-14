@@ -37,6 +37,23 @@ public class PositionOnBoard
             i = value;
         }
     }
+
+    public int Vpos
+    {
+        get
+        {
+            return j;
+
+        }
+
+        set
+        {
+            //   if ((value < 0) || (value >= NUmberOfVerticalSpacesONBoard)) throw new Exception("This position doesnt exist");
+
+            j = value;
+        }
+    }
+
     /// <summary>
     /// Returns true if the piece is on its own side of the river, i.e. 0 - 4 (incl) for Red, 5-9 (incl) for black
     /// </summary>
@@ -52,6 +69,8 @@ public class PositionOnBoard
     {
         return (i >= 0) && (i < NumberOfHorizontalSpacesOnBoard) && (j >= 0) && (j < NUmberOfVerticalSpacesONBoard);
     }
+
+    //specifying the palace location
 
     internal bool IsInMyPalace(PieceControl.Colour colorOfPiece)
     {
@@ -71,19 +90,5 @@ public class PositionOnBoard
     }
 
   
-    public int Vpos
-    {
-        get
-        {
-            return j;
-
-        }
-
-        set
-        {
-         //   if ((value < 0) || (value >= NUmberOfVerticalSpacesONBoard)) throw new Exception("This position doesnt exist");
-
-            j = value;
-        }
-    }
+    
 }

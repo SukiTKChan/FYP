@@ -35,7 +35,6 @@ public class Knight : PieceControl
         //then the Knight may not move in that direction
         //Knight cannot jump over occupied places
      
-
         if (!theBoard.isPositionOccupied(new PositionOnBoard(position.Hpos,position.Vpos+1)))
         {
             movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos + 2));
@@ -59,8 +58,6 @@ public class Knight : PieceControl
             movesFound.Add(new PositionOnBoard(position.Hpos - 2, position.Vpos - 1));
             movesFound.Add(new PositionOnBoard(position.Hpos - 2, position.Vpos + 1));
         }
-
-
 
         //creating a list to store all legal moves,if move found and it is legal, add it to the list
         //return all the possible legal moves
