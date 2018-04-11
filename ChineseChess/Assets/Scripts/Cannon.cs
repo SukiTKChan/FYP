@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Cannon : PieceControl
 {
-    internal Cannon(Colour red, PositionOnBoard positionOnBoard)
+    //constructor
+    internal Cannon(Colour pieceColour, PositionOnBoard positionOnBoard)
     {
-        color = red;
+        color = pieceColour;
         position = positionOnBoard;
+        pieceID = color == Colour.Black ? 11 : 12;
     }
 
 	// Use this for initialization

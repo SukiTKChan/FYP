@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Bishop : PieceControl
 {
-    internal Bishop(Colour red, PositionOnBoard positionOnBoard)
+    //constructor
+    internal Bishop(Colour pieceColour, PositionOnBoard positionOnBoard)
     {
-        color = red;
+        color = pieceColour;
         position = positionOnBoard;
+        pieceID = color == Colour.Black ? 5 : 6;
     }
 
     // Use this for initialization

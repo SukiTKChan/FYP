@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Guard : PieceControl
 {
-
-    internal Guard(Colour red, PositionOnBoard positionOnBoard)
+    //constructor
+    internal Guard(Colour pieceColour, PositionOnBoard positionOnBoard)
     {
-        color = red;
+        color = pieceColour;
         position = positionOnBoard;
+        pieceID = color == Colour.Black ? 3 : 4;
     }
 
 	// Use this for initialization

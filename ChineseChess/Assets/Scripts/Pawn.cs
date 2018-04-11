@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class Pawn : PieceControl
 {
-    GameObject PawnPrefab;
+    //GameObject PawnPrefab;
 
-
-    internal Pawn(Colour red, PositionOnBoard positionOnBoard)
+    //constructor
+    internal Pawn(Colour pieceColour, PositionOnBoard positionOnBoard)
     {
-        color = red;
+        color = pieceColour;
         position = positionOnBoard;
+        pieceID = color == Colour.Black ? 13 : 14;
     }
 
     // Use this for initialization
@@ -34,7 +35,7 @@ public class Pawn : PieceControl
     internal override List<PositionOnBoard> LegalMoves()
     {
         List<PositionOnBoard> movesFound = new List<PositionOnBoard>();
-        //move one space forward, if on its side of river
+        //if on its side of river, move one space forward 
         movesFound.Add(new PositionOnBoard(position.Hpos, (base.color == Colour.Red ? position.Vpos + 1 : position.Vpos - 1)));
 
         //if on other side of river, can move forward, left and right 

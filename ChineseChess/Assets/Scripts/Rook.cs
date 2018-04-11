@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Rook : PieceControl
 {
-    internal Rook(Colour red, PositionOnBoard positionOnBoard)
+    //constructor
+    internal Rook(Colour pieceColour, PositionOnBoard positionOnBoard)
     {
-        color = red;
+        color = pieceColour;
         position = positionOnBoard;
+        pieceID = color == Colour.Black ? 9 : 10;
     }
 
     // Use this for initialization

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Knight : PieceControl
 {
-    internal Knight(Colour red, PositionOnBoard positionOnBoard)
+    //constructor
+    internal Knight(Colour pieceColour, PositionOnBoard positionOnBoard)
     {
-        color = red;
+        color = pieceColour;
         position = positionOnBoard;
+        pieceID = color == Colour.Black ? 7 : 8;
     }
 
 	// Use this for initialization

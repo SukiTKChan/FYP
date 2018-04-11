@@ -5,19 +5,30 @@ using System.Text;
 
 public class BoardAI
 {
+    int numberOfRows;
+    int numberofColumns;
 
     internal PieceControl[,] theboard;
     public BoardAI(int NumberHorizontal, int NumberVertical)
     {
         theboard = new PieceControl[NumberHorizontal, NumberVertical];
-
+        numberOfRows = NumberHorizontal;
+        numberofColumns = NumberVertical;
         setupPieces();
     }
 
     private void setupPieces()
     {
-        //each side has 16 pieces (1 King, 2 Guards, 2 Bishop, 2 Rooks, 2 Knight,2 Cannons,5 Pawns)
+        
+        for (int i = 0; i < numberOfRows; i++)
+        {
+            for (int j = 0; j < numberofColumns; j++)
+            {
+                theboard[i, j] = new BlankSpace(new PositionOnBoard(i, j));
+            }
+        }
 
+        //each side has 16 pieces (1 King, 2 Guards, 2 Bishop, 2 Rooks, 2 Knight,2 Cannons,5 Pawns)
         //setting up all the black pieces (top half of board)
         theboard[4, 9] = new King(PieceControl.Colour.Black, new PositionOnBoard(4,9));
         theboard[3, 9] = new Guard(PieceControl.Colour.Black, new PositionOnBoard(3, 9));
@@ -26,7 +37,7 @@ public class BoardAI
         theboard[6, 9] = new Bishop(PieceControl.Colour.Black, new PositionOnBoard(6, 9));
         theboard[1, 9] = new Knight(PieceControl.Colour.Black, new PositionOnBoard(1, 9));
         theboard[7, 9] = new Knight(PieceControl.Colour.Black, new PositionOnBoard(7, 9));
-        theboard[9, 9] = new Rook(PieceControl.Colour.Black, new PositionOnBoard(9, 9));
+        theboard[0, 9] = new Rook(PieceControl.Colour.Black, new PositionOnBoard(0, 9));
         theboard[8, 9] = new Rook(PieceControl.Colour.Black, new PositionOnBoard(8, 9));
         theboard[1, 7] = new Cannon(PieceControl.Colour.Black, new PositionOnBoard(1, 7));
         theboard[7, 7] = new Cannon(PieceControl.Colour.Black, new PositionOnBoard(7, 7));
@@ -56,7 +67,23 @@ public class BoardAI
 
         
 
-        //theboard[4, 7].LinktoBoard(this);
+        //theboard[7, 2].LinktoBoard(this);
+    }
+
+    //store current board state as a 2d array integer
+    internal int[,] CurrentBoard()
+    {
+        int[,] theCurrentBoard = new int[numberOfRows, numberofColumns];
+
+        for(int i =0; i<numberOfRows;i++)
+        {
+            for(int j=0;j<numberofColumns;j++)
+            {
+                theCurrentBoard[i, j] = theboard[i, j].pieceID;
+            }
+        }
+
+        return theCurrentBoard;
     }
 
 

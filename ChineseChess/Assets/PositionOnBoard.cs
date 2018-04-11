@@ -65,19 +65,20 @@ public class PositionOnBoard
         else return j > 4;
     }
 
+    
     internal bool IsOnBoard()
     {
         return (i >= 0) && (i < NumberOfHorizontalSpacesOnBoard) && (j >= 0) && (j < NUmberOfVerticalSpacesONBoard);
     }
 
-    //specifying the palace location
-
+    //specifying the palace location for Red pieces
     internal bool IsInMyPalace(PieceControl.Colour colorOfPiece)
     {
 
         return (i >= 3) && (i <= 5) && (colorOfPiece == PieceControl.Colour.Red ? (j >= 0) && (j <= 2) : (j >= 7) && (j <= 9));
     }
 
+    //specifying the palace location for black pieces
     internal bool IsInOpposingPalace(PieceControl.Colour colorOfPiece)
     {
 
@@ -89,6 +90,4 @@ public class PositionOnBoard
         return !IsInMyPalace(PieceControl.Colour.Red) && !IsInMyPalace(PieceControl.Colour.Black);
     }
 
-  
-    
 }

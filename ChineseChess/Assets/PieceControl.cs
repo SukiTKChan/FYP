@@ -14,6 +14,8 @@ public abstract class PieceControl : MonoBehaviour
 
     internal Colour color;
 
+    internal int pieceID=0;
+
     internal abstract bool IsAlive();
     
     internal abstract List<PositionOnBoard> LegalMoves();

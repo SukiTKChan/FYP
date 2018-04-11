@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         board.CreateBoard();
         boardAI = new BoardAI(9, 10);
 
-        List<PositionOnBoard> ans =  boardAI.theboard[4, 7].LegalMoves();
+        List<PositionOnBoard> ans =  boardAI.theboard[7, 2].LegalMoves();
 	}
 	
 	// Update is called once per frame

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class King : PieceControl
 {
-    internal King(Colour red, PositionOnBoard positionOnBoard)
+    //constructor
+    internal King(Colour pieceColour, PositionOnBoard positionOnBoard)
     {
-        color = red;
+        color = pieceColour;
         position = positionOnBoard;
+        pieceID = color == Colour.Black ? 1 : 2; 
     }
 
 	// Use this for initialization
