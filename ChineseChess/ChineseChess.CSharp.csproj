@@ -82,6 +82,7 @@
     <Compile Include="Assets\PieceControl.cs" />
     <Compile Include="Assets\PositionOnBoard.cs" />
     <Compile Include="Assets\Scripts\Bishop.cs" />
+    <Compile Include="Assets\Scripts\BlankSpace.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />
     <Compile Include="Assets\Scripts\Cannon.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />

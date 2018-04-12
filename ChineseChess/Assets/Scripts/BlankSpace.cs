@@ -5,6 +5,11 @@ using UnityEngine;
 public class BlankSpace : PieceControl
 {
     //constructor
+    internal BlankSpace(PositionOnBoard positionOnBoard)
+    {
+        pieceID = 0;
+        position = positionOnBoard;
+    }
     internal override bool IsAlive()
     {
         throw new System.NotImplementedException();
@@ -14,11 +19,7 @@ public class BlankSpace : PieceControl
     {
         return null;
     }
-    internal BlankSpace(PositionOnBoard positionOnBoard)
-    {
-        pieceID = 0;
-        position = positionOnBoard;
-    }
+    
     // Use this for initialization
     void Start ()
     {
