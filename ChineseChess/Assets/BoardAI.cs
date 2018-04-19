@@ -7,8 +7,12 @@ public class BoardAI
 {
     int numberOfRows;
     int numberofColumns;
+
     List<PieceControl> redPieces, blackPieces; 
+
     internal PieceControl[,] theboard;
+
+    
 
     public BoardAI(int NumberHorizontal, int NumberVertical)
     {
@@ -136,15 +140,13 @@ public class BoardAI
         theboard[4, 9].LinktoBoard(this);
     }
 
-    //for each black piece, get the first legal move from the list
+    //for each black piece, get the first legal move from the list, move piece to that location
     internal void processBlackPiecesMove()
     {
         foreach(PieceControl piece in blackPieces)
         {
             movePiece(piece, piece.LegalMoves()[0]);
         }
-
-        
     }
 
     internal void processRedPiecesMove()
@@ -158,7 +160,27 @@ public class BoardAI
     //moving a piece, update the board
     private void movePiece(PieceControl piece, PositionOnBoard positionOnBoard)
     {
+        //get copy of board
+        int [,] theCurrentBoard = CurrentBoard();
+
+        //empty piece from old position
+        emptyPosition(piece.position);
+
+        //check the lists to see if there is a piece in new position
+        if(theboard[positionOnBoard.Hpos,positionOnBoard.Vpos].pieceID == 0)
+        {
+
+        }
+        //move piece
+        
+
+
        
+    }
+
+    private void emptyPosition(PositionOnBoard position)
+    {
+        throw new NotImplementedException();
     }
 
     //loops through the game board to get current board
@@ -177,12 +199,10 @@ public class BoardAI
         return theCurrentBoard;
     }
 
-
     internal bool isPositionOccupiedbyA(PositionOnBoard position, PieceControl.Colour color)
     {
         return (theboard[position.Hpos, position.Vpos]) &&  theboard[position.Hpos, position.Vpos].color == color;
     }
-
 
 
     internal bool isPositionOccupied(PositionOnBoard positionOnBoard)
