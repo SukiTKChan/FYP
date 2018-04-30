@@ -11,6 +11,12 @@ public class Rook : PieceControl
         position = positionOnBoard;
         pieceID = color == Colour.Black ? 9 : 10;
     }
+    internal Rook(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
+    {
+        LinktoBoard(boardAI);
+
+
+    }
 
     // Use this for initialization
     void Start () 

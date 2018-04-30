@@ -7,9 +7,12 @@ public class Board : MonoBehaviour
 {
     public GameObject [,] boardArray = new GameObject[9,10];
     public GameObject boardSpawnPrefab;
-    //public GameObject
 
-    public Material boardMaterial;
+
+    //public Material boardMaterial;
+    public Material whiteMaterial;
+    public Material blackMaterial;
+
 
 
     public Color boardLineColor = Color.black;
@@ -38,7 +41,15 @@ public class Board : MonoBehaviour
             {
                 boardArray[i, j] = (GameObject)Instantiate(boardSpawnPrefab, new Vector3(j, 0, i), Quaternion.identity);
 
-                boardArray[i, j].GetComponent<Renderer>().material = boardMaterial;
+                // if the square is double odd or double even, it‘s black
+                if (i % 2 != 0 && j % 2 != 0 || i % 2 == 0 && j % 2 == 0) 
+                {
+                    boardArray[i, j].GetComponent<Renderer>().material = blackMaterial;
+                }
+                else
+                {
+                    boardArray[i, j].GetComponent<Renderer>().material = whiteMaterial;
+                }
             }
 
         }

@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PieceControl : MonoBehaviour 
+public abstract class PieceControl 
 {
 
     internal BoardAI theBoard;
 
     internal PositionOnBoard position;
 
-    internal enum Colour { Red, Black,Empty};
+    public enum Colour { Red, Black,Empty};
 
-    internal Colour color;
+    public Colour color;
 
     internal int pieceID=0;
 

@@ -11,9 +11,15 @@ public class Cannon : PieceControl
         position = positionOnBoard;
         pieceID = color == Colour.Black ? 11 : 12;
     }
+    internal Cannon(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
+    {
+        LinktoBoard(boardAI);
 
-	// Use this for initialization
-	void Start () 
+
+    }
+
+    // Use this for initialization
+    void Start () 
     {
 		
 	}

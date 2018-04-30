@@ -12,8 +12,14 @@ public class Guard : PieceControl
         pieceID = color == Colour.Black ? 3 : 4;
     }
 
-	// Use this for initialization
-	void Start () 
+    internal Guard(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
+    {
+        LinktoBoard(boardAI);
+
+
+    }
+    // Use this for initialization
+    void Start () 
     {
 		
 	}

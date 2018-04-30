@@ -11,6 +11,12 @@ public class Bishop : PieceControl
         position = positionOnBoard;
         pieceID = color == Colour.Black ? 5 : 6;
     }
+    internal Bishop(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
+    {
+        LinktoBoard(boardAI);
+
+
+    }
 
     // Use this for initialization
     void Start ()

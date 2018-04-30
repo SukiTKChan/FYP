@@ -15,6 +15,12 @@ public class Pawn : PieceControl
         pieceID = color == Colour.Black ? 13 : 14;
     }
 
+    internal Pawn(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
+    {
+        LinktoBoard(boardAI);
+
+
+    }
     // Use this for initialization
     void Start ()
     {
