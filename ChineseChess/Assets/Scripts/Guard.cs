@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class Guard : PieceControl
 {
-    //constructor
-    internal Guard(Colour pieceColour, PositionOnBoard positionOnBoard)
+
+
+    internal Guard(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) 
     {
         color = pieceColour;
         position = positionOnBoard;
         pieceID = color == Colour.Black ? 3 : 4;
-    }
-
-    internal Guard(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
-    {
         LinktoBoard(boardAI);
-
 
     }
     // Use this for initialization

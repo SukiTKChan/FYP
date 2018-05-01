@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Cannon : PieceControl
 {
-    //constructor
-    internal Cannon(Colour pieceColour, PositionOnBoard positionOnBoard)
+
+    internal Cannon(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI)
     {
         color = pieceColour;
         position = positionOnBoard;
         pieceID = color == Colour.Black ? 11 : 12;
-    }
-    internal Cannon(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
-    {
         LinktoBoard(boardAI);
 
 

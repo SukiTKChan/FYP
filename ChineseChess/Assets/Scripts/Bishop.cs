@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class Bishop : PieceControl
 {
-    //constructor
-    internal Bishop(Colour pieceColour, PositionOnBoard positionOnBoard)
+
+    internal Bishop(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI)
     {
         color = pieceColour;
         position = positionOnBoard;
         pieceID = color == Colour.Black ? 5 : 6;
-    }
-    internal Bishop(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
-    {
         LinktoBoard(boardAI);
-
 
     }
 

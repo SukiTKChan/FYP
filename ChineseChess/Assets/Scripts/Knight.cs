@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class Knight : PieceControl
 {
-    //constructor
-    internal Knight(Colour pieceColour, PositionOnBoard positionOnBoard)
+
+    internal Knight(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) 
     {
         color = pieceColour;
         position = positionOnBoard;
         pieceID = color == Colour.Black ? 7 : 8;
-    }
-    internal Knight(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
-    {
         LinktoBoard(boardAI);
-
 
     }
 

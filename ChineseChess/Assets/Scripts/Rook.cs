@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Rook : PieceControl
 {
-    //constructor
-    internal Rook(Colour pieceColour, PositionOnBoard positionOnBoard)
+
+    internal Rook(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) 
     {
         color = pieceColour;
         position = positionOnBoard;
         pieceID = color == Colour.Black ? 9 : 10;
-    }
-    internal Rook(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
-    {
         LinktoBoard(boardAI);
 
 

@@ -5,18 +5,12 @@ using UnityEngine;
 
 public class Pawn : PieceControl
 {
-    //GameObject PawnPrefab;
 
-    //constructor
-    internal Pawn(Colour pieceColour, PositionOnBoard positionOnBoard)
+    internal Pawn(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI)
     {
         color = pieceColour;
         position = positionOnBoard;
         pieceID = color == Colour.Black ? 13 : 14;
-    }
-
-    internal Pawn(Colour pieceColour, PositionOnBoard positionOnBoard, BoardAI boardAI) : this(pieceColour, positionOnBoard)
-    {
         LinktoBoard(boardAI);
 
 

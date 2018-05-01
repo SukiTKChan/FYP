@@ -11,7 +11,6 @@ public class BoardAI
     List<PieceControl> redPieces, blackPieces; 
 
     internal PieceControl[,] theboard;
-    internal BlankSpace blankSpace;
     TreeNode mainAITree;
     TreeNode currentNode;
     //create tree
@@ -46,115 +45,144 @@ public class BoardAI
 
         //each side has 16 pieces (1 King, 2 Guards, 2 Bishop, 2 Rooks, 2 Knight,2 Cannons,5 Pawns)
         //setting up all the black pieces (top half of board)
-        //each pieces is added to the board
+        //each pieces is added to the board and to the black pieces list
 
        
-        King king = new King(PieceControl.Colour.Black, new PositionOnBoard(4, 9),this);
-        theboard[4, 9] = king;
-        blackPieces.Add(king);
+        King blackKing = new King(PieceControl.Colour.Black, new PositionOnBoard(4, 9),this);
+        theboard[4, 9] = blackKing;
+        blackPieces.Add(blackKing);
 
-        theboard[3, 9] = new Guard(PieceControl.Colour.Black, new PositionOnBoard(3, 9),this);
-        blackPieces.Add(theboard[3, 9]);
+        Guard blackGuard1 = new Guard(PieceControl.Colour.Black, new PositionOnBoard(3, 9), this);
+        theboard[3, 9] = blackGuard1;
+        blackPieces.Add(blackGuard1);
 
-        theboard[5, 9] = new Guard(PieceControl.Colour.Black, new PositionOnBoard(5, 9),this);
-        blackPieces.Add(theboard[5, 9]);
+        Guard blackGuard2 = new Guard(PieceControl.Colour.Black, new PositionOnBoard(5, 9), this);
+        theboard[5, 9] = blackGuard2;
+        blackPieces.Add(blackGuard2);
 
-        theboard[2, 9] = new Bishop(PieceControl.Colour.Black, new PositionOnBoard(2, 9),this);
-        blackPieces.Add(theboard[2, 9]);
+        Bishop blackBishop1 = new Bishop(PieceControl.Colour.Black, new PositionOnBoard(2, 9), this);
+        theboard[2, 9] = blackBishop1;
+        blackPieces.Add(blackBishop1);
 
-        theboard[6, 9] = new Bishop(PieceControl.Colour.Black, new PositionOnBoard(6, 9), this);
-        blackPieces.Add(theboard[6, 9]);
+        Bishop blackBishop2 = new Bishop(PieceControl.Colour.Black, new PositionOnBoard(6, 9), this);
+        theboard[6, 9] = blackBishop2;
+        blackPieces.Add(blackBishop2);
 
-        theboard[1, 9] = new Knight(PieceControl.Colour.Black, new PositionOnBoard(1, 9), this);
-        blackPieces.Add(theboard[1, 9]);
+        Knight blackKnight1 = new Knight(PieceControl.Colour.Black, new PositionOnBoard(1, 9), this);
+        theboard[1, 9] = blackKnight1;
+        blackPieces.Add(blackKnight1);
 
-        theboard[7, 9] = new Knight(PieceControl.Colour.Black, new PositionOnBoard(7, 9), this);
-        blackPieces.Add(theboard[7, 9]);
+        Knight blackKnight2 = new Knight(PieceControl.Colour.Black, new PositionOnBoard(7, 9), this);
+        theboard[7, 9] = blackKnight2;
+        blackPieces.Add(blackKnight2);
 
-        theboard[0, 9] = new Rook(PieceControl.Colour.Black, new PositionOnBoard(0, 9), this);
-        blackPieces.Add(theboard[0, 9]);
+        Rook blackRook1 = new Rook(PieceControl.Colour.Black, new PositionOnBoard(0, 9), this);
+        theboard[0, 9] = blackRook1;
+        blackPieces.Add(blackRook1);
 
-        theboard[8, 9] = new Rook(PieceControl.Colour.Black, new PositionOnBoard(8, 9), this);
-        blackPieces.Add(theboard[8, 9]);
+        Rook blackRook2 = new Rook(PieceControl.Colour.Black, new PositionOnBoard(8, 9), this);
+        theboard[8, 9] = blackRook2;
+        blackPieces.Add(blackRook2);
 
-        theboard[1, 7] = new Cannon(PieceControl.Colour.Black, new PositionOnBoard(1, 7), this);
-        blackPieces.Add(theboard[1, 7]);
+        Cannon blackCannon1 = new Cannon(PieceControl.Colour.Black, new PositionOnBoard(1, 7), this);
+        theboard[1, 7] = blackCannon1;
+        blackPieces.Add(blackCannon1);
 
-        theboard[7, 7] = new Cannon(PieceControl.Colour.Black, new PositionOnBoard(7, 7), this);
-        blackPieces.Add(theboard[7, 7]);
+        Cannon blackCannon2 = new Cannon(PieceControl.Colour.Black, new PositionOnBoard(7, 7), this);
+        theboard[7, 7] = blackCannon2;
+        blackPieces.Add(blackCannon2);
 
-        theboard[6, 9] = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(6, 9), this);
-        blackPieces.Add(theboard[6, 9]);
+        Pawn blackPawn1 = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(0, 6), this);
+        theboard[0, 6] = blackPawn1;
+        blackPieces.Add(blackPawn1);
 
-        theboard[2, 6] = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(2, 6), this);
-        blackPieces.Add(theboard[2, 6]);
+        Pawn blackPawn2 = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(2, 6), this);
+        theboard[2, 6] = blackPawn2;
+        blackPieces.Add(blackPawn2);
 
-        theboard[4, 6] = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(4, 6), this);
-        blackPieces.Add(theboard[4, 6]);
+        Pawn blackPawn3 = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(4, 6), this);
+        theboard[4, 6] = blackPawn3;
+        blackPieces.Add(blackPawn3);
 
-        theboard[6, 6] = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(6, 6), this);
-        blackPieces.Add(theboard[6, 6]);
+        Pawn blackPawn4 = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(6, 6), this);
+        theboard[6, 6] = blackPawn4;
+        blackPieces.Add(blackPawn4);
 
-        theboard[8, 6] = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(8, 6), this);
-        blackPieces.Add(theboard[8, 6]);
+        Pawn blackPawn5 = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(8, 6), this);
+        theboard[8, 6] = blackPawn5;
+        blackPieces.Add(blackPawn5);
 
         //setting up all the red pieces (button half of board)
-        //add each piece to the board
-        theboard[4, 0] = new King(PieceControl.Colour.Red, new PositionOnBoard(4, 0),this);
-        redPieces.Add(theboard[4, 0]);
+        //add each pieces to the board and to the red pieces list
+        King redKing = new King(PieceControl.Colour.Red, new PositionOnBoard(4, 0), this);
+        theboard[4, 0] = redKing;
+        redPieces.Add(redKing);
 
-        theboard[3, 0] = new Guard(PieceControl.Colour.Red, new PositionOnBoard(3, 0),this);
-        redPieces.Add(theboard[3, 0]);
+        Guard redGuard1 = new Guard(PieceControl.Colour.Red, new PositionOnBoard(3, 0), this);
+        theboard[3, 0] = redGuard1;
+        redPieces.Add(redGuard1);
 
-        theboard[5, 0] = new Guard(PieceControl.Colour.Red, new PositionOnBoard(5, 0),this);
-        redPieces.Add(theboard[5, 0]);
+        Guard redGuard2 = new Guard(PieceControl.Colour.Red, new PositionOnBoard(5, 0), this);
+        theboard[5, 0] = redGuard2;
+        redPieces.Add(redGuard2);
 
-        theboard[2, 0] = new Bishop(PieceControl.Colour.Red, new PositionOnBoard(2, 0), this);
-        redPieces.Add(theboard[2, 0]);
+        Bishop redBishop1 = new Bishop(PieceControl.Colour.Red, new PositionOnBoard(2, 0), this);
+        theboard[2, 0] = redBishop1;
+        redPieces.Add(redBishop1);
 
-        theboard[6, 0] = new Bishop(PieceControl.Colour.Red, new PositionOnBoard(6, 0), this);
-        redPieces.Add(theboard[6, 0]);
+        Bishop redBishop2 = new Bishop(PieceControl.Colour.Red, new PositionOnBoard(6, 0), this);
+        theboard[6, 0] = redBishop2;
+        redPieces.Add(redBishop2);
 
-        theboard[1, 0] = new Knight(PieceControl.Colour.Red, new PositionOnBoard(1, 0), this);
-        redPieces.Add(theboard[1, 0]);
+        Knight redKnight1 = new Knight(PieceControl.Colour.Red, new PositionOnBoard(1, 0), this);
+        theboard[1, 0] = redKnight1;
+        redPieces.Add(redKnight1);
 
-        theboard[7, 0] = new Knight(PieceControl.Colour.Red, new PositionOnBoard(7, 0), this);
-        redPieces.Add(theboard[7, 0]);
+        Knight redKnight2 = new Knight(PieceControl.Colour.Red, new PositionOnBoard(7, 0), this);
+        theboard[7, 0] = redKnight2;
+        redPieces.Add(redKnight2);
 
-        theboard[0, 0] = new Rook(PieceControl.Colour.Red, new PositionOnBoard(0, 0), this);
-        redPieces.Add(theboard[0, 0]);
+        Rook redRook1 = new Rook(PieceControl.Colour.Red, new PositionOnBoard(0, 0), this);
+        theboard[0, 0] = redRook1;
+        redPieces.Add(redRook1);
 
-        theboard[8, 0] = new Rook(PieceControl.Colour.Red, new PositionOnBoard(8, 0), this);
-        redPieces.Add(theboard[8, 0]);
+        Rook redRook2 = new Rook(PieceControl.Colour.Red, new PositionOnBoard(8, 0), this);
+        theboard[8, 0] = redRook2;
+        redPieces.Add(redRook2);
 
-        theboard[1, 2] = new Cannon(PieceControl.Colour.Red, new PositionOnBoard(1, 2), this);
-        redPieces.Add(theboard[1, 2]);
+        Cannon redCannon1 = new Cannon(PieceControl.Colour.Red, new PositionOnBoard(1, 2), this);
+        theboard[1, 2] = redCannon1;
+        redPieces.Add(redCannon1);
 
-        theboard[7, 2] = new Cannon(PieceControl.Colour.Red, new PositionOnBoard(7, 2), this);
-        redPieces.Add(theboard[7, 2]);
+        Cannon redCannon2 = new Cannon(PieceControl.Colour.Red, new PositionOnBoard(7, 2), this);
+        theboard[7, 2] = redCannon2;
+        redPieces.Add(redCannon2);
 
-        theboard[0, 3] = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(0, 3), this);
-        redPieces.Add(theboard[0, 3]);
+        Pawn redPawn1 = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(0, 3), this);
+        theboard[0, 3] = redPawn1;
+        redPieces.Add(redPawn1);
 
-        theboard[2, 3] = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(2, 3), this);
-        redPieces.Add(theboard[2, 3]);
+        Pawn redPawn2 = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(2, 3), this);
+        theboard[2, 3] = redPawn2;
+        redPieces.Add(redPawn2);
 
-        theboard[4, 3] = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(4, 3), this);
-        redPieces.Add(theboard[4, 3]);
+        Pawn redPawn3 = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(4, 3), this);
+        theboard[4, 3] = redPawn3;
+        redPieces.Add(redPawn3);
 
-        theboard[6, 3] = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(6, 3), this);
-        redPieces.Add(theboard[6, 3]);
+        Pawn redPawn4 = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(6, 3), this);
+        theboard[6, 3] = redPawn4;
+        redPieces.Add(redPawn4);
 
-        theboard[8, 3] = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(8, 3), this);
-        redPieces.Add(theboard[8, 3]);
+        Pawn redPawn5 = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(8, 3), this);
+        theboard[8, 3] = redPawn5;
+        redPieces.Add(redPawn5);
 
-        //theboard[4, 8] = new King(PieceControl.Colour.Black, new PositionOnBoard(4, 8));
-        //theboard[3, 2] = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(3, 2));
-        //theboard[4, 2] = new Knight(PieceControl.Colour.Red, new PositionOnBoard(4, 2));
+        
         theboard[4, 8].LinktoBoard(this);
     }
 
-    //for each black piece, get the first legal move from the list, move piece to that location
+    //for each black piece, get all legal move from the list, move piece to that location
     internal void processBlackPiecesMove()
     {
 
@@ -180,7 +208,13 @@ public class BoardAI
     {
         foreach (PieceControl piece in redPieces)
         {
-            movePiece(piece, piece.LegalMoves()[0]);
+            foreach (PositionOnBoard moveTo in piece.LegalMoves())
+            {
+                PieceControl[,] copyOftheboard = theboard;
+                movePiece(piece, moveTo);
+                currentNode.children.Add(new TreeNode(CurrentBoard()));
+                theboard = copyOftheboard;
+            }
         }
     }
 
@@ -202,8 +236,6 @@ public class BoardAI
                 //remove
                 removePiece(otherPiece);
 
-                //replace with current piece
-
             }
         }
 
@@ -211,8 +243,6 @@ public class BoardAI
         movePiece(piece, positionOnBoard);
         theboard[positionOnBoard.Hpos, positionOnBoard.Vpos] = piece;
         piece.position = positionOnBoard;
-        //update board
-        //theCurrentBoard = ;
        
     }
 
