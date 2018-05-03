@@ -39,25 +39,25 @@ public class Knight : PieceControl
         //then the Knight may not move in that direction
         //Knight cannot jump over occupied places
      
-        if (!theBoard.isPositionOccupied(new PositionOnBoard(position.Hpos,position.Vpos+1)))
+        if ((new PositionOnBoard(position.Hpos, position.Vpos + 1)).IsOnBoard() &&  !theBoard.isPositionOccupied(new PositionOnBoard(position.Hpos,position.Vpos+1)))
         {
             movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos + 2));
             movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos + 2));
         }
 
-        if (!theBoard.isPositionOccupied(new PositionOnBoard(position.Hpos + 1, position.Vpos)))
+        if (new PositionOnBoard(position.Hpos + 1, position.Vpos).IsOnBoard() && !theBoard.isPositionOccupied(new PositionOnBoard(position.Hpos + 1, position.Vpos)))
         {
             movesFound.Add(new PositionOnBoard(position.Hpos + 2, position.Vpos - 1));
             movesFound.Add(new PositionOnBoard(position.Hpos + 2, position.Vpos + 1));
         }
 
-        if (!theBoard.isPositionOccupied(new PositionOnBoard(position.Hpos, position.Vpos - 1)))
+        if (new PositionOnBoard(position.Hpos, position.Vpos - 1).IsOnBoard() && !theBoard.isPositionOccupied(new PositionOnBoard(position.Hpos, position.Vpos - 1)))
         {
             movesFound.Add(new PositionOnBoard(position.Hpos - 1, position.Vpos - 2));
             movesFound.Add(new PositionOnBoard(position.Hpos + 1, position.Vpos - 2));
         }
 
-        if (!theBoard.isPositionOccupied(new PositionOnBoard(position.Hpos - 1, position.Vpos)))
+        if (new PositionOnBoard(position.Hpos - 1, position.Vpos).IsOnBoard() && !theBoard.isPositionOccupied(new PositionOnBoard(position.Hpos - 1, position.Vpos)))
         {
             movesFound.Add(new PositionOnBoard(position.Hpos - 2, position.Vpos - 1));
             movesFound.Add(new PositionOnBoard(position.Hpos - 2, position.Vpos + 1));

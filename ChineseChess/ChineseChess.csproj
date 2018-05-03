@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -80,18 +78,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BoardAI.cs" />
-    <Compile Include="Assets\PieceControl.cs" />
-    <Compile Include="Assets\PositionOnBoard.cs" />
     <Compile Include="Assets\Scripts\Bishop.cs" />
     <Compile Include="Assets\Scripts\BlankSpace.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />
+    <Compile Include="Assets\Scripts\BoardAI.cs" />
     <Compile Include="Assets\Scripts\Cannon.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Guard.cs" />
     <Compile Include="Assets\Scripts\King.cs" />
     <Compile Include="Assets\Scripts\Knight.cs" />
     <Compile Include="Assets\Scripts\Pawn.cs" />
+    <Compile Include="Assets\Scripts\PieceControl.cs" />
+    <Compile Include="Assets\Scripts\PositionOnBoard.cs" />
     <Compile Include="Assets\Scripts\Rook.cs" />
     <Compile Include="Assets\Scripts\TreeNode.cs" />
   </ItemGroup>

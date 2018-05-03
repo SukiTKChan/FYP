@@ -12,6 +12,7 @@ public class TreeNode
     public TreeNode(int [,] board)
     {
         children = new List<TreeNode>();
+        boardSetup = board;
     }
 
 }

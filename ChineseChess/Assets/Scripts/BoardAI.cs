@@ -28,7 +28,13 @@ public class BoardAI
         mainAITree = new TreeNode(CurrentBoard());
         currentNode = mainAITree;
         processBlackPiecesMove();
-        processRedPiecesMove();
+        List<TreeNode> firstLayer = currentNode.children;
+        foreach(TreeNode child in firstLayer)
+        {
+            currentNode = child;
+            processRedPiecesMove();
+        }
+        UnityEngine.Debug.Log("dfds");
 
     }
 
@@ -179,7 +185,8 @@ public class BoardAI
         redPieces.Add(redPawn5);
 
         
-        theboard[4, 8].LinktoBoard(this);
+        //redPawn3.LinktoBoard(this);
+        List<PositionOnBoard> ans = redPawn3.LegalMoves();
     }
 
     //for each black piece, get all legal move from the list, move piece to that location
@@ -189,13 +196,15 @@ public class BoardAI
       
 
         foreach(PieceControl piece in blackPieces)
-        {
-            foreach(PositionOnBoard moveTo in piece.LegalMoves())
+        { List<PositionOnBoard> possibleMoves = piece.LegalMoves();
+            foreach (PositionOnBoard moveTo in possibleMoves )
             {
                 PieceControl[,] copyOftheboard = theboard;
+                List<PieceControl> redsBeforeMOve = redPieces;
                 movePiece(piece, moveTo);
                 currentNode.children.Add(new TreeNode( CurrentBoard()));
                 theboard = copyOftheboard;
+                redPieces = redsBeforeMOve;
 
 
             }
@@ -211,9 +220,11 @@ public class BoardAI
             foreach (PositionOnBoard moveTo in piece.LegalMoves())
             {
                 PieceControl[,] copyOftheboard = theboard;
+                List<PieceControl> blacksBeforeMOve = blackPieces;
                 movePiece(piece, moveTo);
                 currentNode.children.Add(new TreeNode(CurrentBoard()));
                 theboard = copyOftheboard;
+                blackPieces = blacksBeforeMOve;
             }
         }
     }
@@ -221,8 +232,7 @@ public class BoardAI
     //moving a piece, update the board
     private void movePiece(PieceControl piece, PositionOnBoard positionOnBoard)
     {
-        //get copy of board
-        int [,] theCurrentBoard = CurrentBoard();
+
 
         //empty piece from old position
         emptyPosition(piece.position);
@@ -240,7 +250,7 @@ public class BoardAI
         }
 
         // move piece
-        movePiece(piece, positionOnBoard);
+
         theboard[positionOnBoard.Hpos, positionOnBoard.Vpos] = piece;
         piece.position = positionOnBoard;
        
@@ -278,6 +288,97 @@ public class BoardAI
 
         return theCurrentBoard;
     }
+
+    internal PieceControl[,] boardFor(int[,] boardFromInts)
+    {
+        BoardAI newBoard = new BoardAI(numberofColumns, numberOfRows);
+        PieceControl[,] placeHolder = new PieceControl[numberofColumns, numberOfRows];
+
+        for (int col = 0; col < numberofColumns; col++)
+        {
+            for (int row = 0; row < numberOfRows; row++)
+            {
+                switch (boardFromInts[col, row])
+                {
+
+                    case 0:
+
+                        placeHolder[col, row] = new BlankSpace(new PositionOnBoard(col, row));
+                        break;
+
+                    case 1:
+
+                        placeHolder[col, row] = new King(PieceControl.Colour.Black, new PositionOnBoard(col, row), newBoard);
+                        break;
+                    case 2:
+
+                        placeHolder[col, row] = new King(PieceControl.Colour.Red, new PositionOnBoard(col, row), newBoard);
+                        break;
+                    case 3:
+
+                        placeHolder[col, row] = new Guard(PieceControl.Colour.Black, new PositionOnBoard(col, row), newBoard);
+                        break;
+                    case 4:
+
+                        placeHolder[col, row] = new Guard(PieceControl.Colour.Red, new PositionOnBoard(col, row), newBoard);
+                        break;
+                    case 5:
+
+                        placeHolder[col, row] = new Bishop(PieceControl.Colour.Black, new PositionOnBoard(col, row), newBoard);
+                        break;
+
+                    case 6:
+
+                        placeHolder[col, row] = new Bishop(PieceControl.Colour.Red, new PositionOnBoard(col, row), newBoard);
+                        break;
+
+                    case 7:
+
+                        placeHolder[col, row] = new Knight(PieceControl.Colour.Black, new PositionOnBoard(col, row), newBoard);
+                        break;
+
+                    case 8:
+
+                        placeHolder[col, row] = new Knight(PieceControl.Colour.Black, new PositionOnBoard(col, row), newBoard);
+                        break;
+
+                    case 9:
+
+                        placeHolder[col, row] = new Rook(PieceControl.Colour.Black, new PositionOnBoard(col, row), newBoard);
+                        break;
+
+                    case 10:
+
+                        placeHolder[col, row] = new Rook(PieceControl.Colour.Red, new PositionOnBoard(col, row), newBoard);
+                        break;
+
+                    case 11:
+
+                        placeHolder[col, row] = new Cannon(PieceControl.Colour.Black, new PositionOnBoard(col, row), newBoard);
+                        break;
+
+                    case 12:
+
+                        placeHolder[col, row] = new Cannon(PieceControl.Colour.Red, new PositionOnBoard(col, row), newBoard);
+                        break;
+
+                    case 13:
+
+                        placeHolder[col, row] = new Pawn(PieceControl.Colour.Black, new PositionOnBoard(col, row), newBoard);
+                        break;
+
+                    case 14:
+
+                        placeHolder[col, row] = new Pawn(PieceControl.Colour.Red, new PositionOnBoard(col, row), newBoard);
+                        break;
+                }
+            }
+
+        }
+
+        return placeHolder;
+    }
+
 
     internal bool isPositionOccupiedbyA(PositionOnBoard position, PieceControl.Colour color)
     {
